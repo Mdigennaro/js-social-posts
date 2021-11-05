@@ -55,3 +55,61 @@ const posts = [
         "created": "2021-03-05"
     }
 ];
+
+console.log(posts);
+//Richiamo il container dove inserire i post
+const containerPosts = document.getElementById('container');
+
+
+// creo il contenuto del container dove inserire i post
+for (let i = 0; i < posts.length; i++) {
+  //Creo il div dove inserire tutti i dati del singolo post  
+  const post = document.createElement('div');
+  post.classList.add('post');
+  containerPosts.append(post);
+
+  console.log(containerPosts);
+  
+  //Creiamo l'header del post
+  const postHeader = document.createElement('div');
+  postHeader.classList.add('post__header');
+  post.append(postHeader);
+
+  const postMeta = document.createElement('div');
+  postMeta.classList.add('post-meta');
+  postHeader.append(postMeta);
+  
+  //foto profilo
+  const fotoProfilo = document.createElement('div');
+  fotoProfilo.classList.add('post-meta__icon');
+  postMeta.append(fotoProfilo);
+
+
+
+
+
+  //Creo div contenitore per il nome e per la pubblicazione del post
+  const nomeData = document.createElement('div');
+  nomeData.classList.add('post-meta__data');
+  postMeta.append(nomeData);
+
+  //Nome
+  const nomeUtente = document.createElement('div');
+  nomeUtente.classList.add('post-meta__author');
+  nomeData.append(nomeUtente);
+
+
+
+
+
+  //Data pubblicazione
+  const dataPost = document.createElement('div');
+  dataPost.classList.add('post-meta__time');
+  nomeData.append(dataPost)
+
+  
+  
+  
+  
+  //
+}
