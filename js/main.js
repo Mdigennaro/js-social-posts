@@ -65,42 +65,42 @@ const containerPosts = document.getElementById('container');
 // creo il contenuto del container dove inserire i post
 for (let i = 0; i < posts.length; i++) {
 
-    const postAttuale = posts[i];
+  const postAttuale = posts[i];
 
     
-    //Creo il div dove inserire tutti i dati del singolo post  
-    const post = document.createElement('div');
-    post.classList.add('post');
-    containerPosts.append(post);
+  //Creo il div dove inserire tutti i dati del singolo post  
+  const post = document.createElement('div');
+  post.classList.add('post');
+  containerPosts.append(post);
     
-    console.log(containerPosts);
+  console.log(containerPosts);
     
-    //Creiamo l'header del post
-    const postHeader = document.createElement('div');
-    postHeader.classList.add('post__header');
-    post.append(postHeader);
+  //Creiamo l'header del post
+  const postHeader = document.createElement('div');
+  postHeader.classList.add('post__header');
+  post.append(postHeader);
     
-    const postMeta = document.createElement('div');
-    postMeta.classList.add('post-meta');
-    postHeader.append(postMeta);
+  const postMeta = document.createElement('div');
+  postMeta.classList.add('post-meta');
+  postHeader.append(postMeta);
     
-    //foto profilo
-    const fotoProfilo = document.createElement('div');
-    fotoProfilo.classList.add('post-meta__icon');
-    postMeta.append(fotoProfilo);
+  //foto profilo
+  const fotoProfilo = document.createElement('div');
+  fotoProfilo.classList.add('post-meta__icon');
+  postMeta.append(fotoProfilo);
     
-    const media = postAttuale.media;
-    console.log('media', media);
+  const media = postAttuale.media;
+  console.log('media', media);
+  
+  fotoProfilo.innerHTML =
+  `
+  <img class="profile-pic" src="${media}" alt="">
+  `;
     
-    fotoProfilo.innerHTML =
-    `
-    <img class="profile-pic" src="${media}" alt="Phil Mangione">
-    `
-    
-    //Creo div contenitore per il nome e per la pubblicazione del post
-    const nomeData = document.createElement('div');
-    nomeData.classList.add('post-meta__data');
-    postMeta.append(nomeData);
+  //Creo div contenitore per il nome e per la pubblicazione del post
+  const nomeData = document.createElement('div');
+  nomeData.classList.add('post-meta__data');
+  postMeta.append(nomeData);
   
   //Nome
   const nomeUtente = document.createElement('div');
@@ -108,8 +108,11 @@ for (let i = 0; i < posts.length; i++) {
   nomeData.append(nomeUtente);
   
   
+  const nome = postAttuale.author.name;
+  console.log('nome', nome);
   
-  
+  nomeUtente.innerHTML = nome;
+
 
   //Data pubblicazione
   const dataPost = document.createElement('div');
@@ -117,9 +120,11 @@ for (let i = 0; i < posts.length; i++) {
   nomeData.append(dataPost)
   
   
+  const data = postAttuale.created;
+  console.log('data', data);
+  dataPost.innerHTML = data;
   
-  
-  
+
   /////////////////////
   //Creo l'area del testo dell'utente
   const testoPost = document.createElement('div');
@@ -127,7 +132,9 @@ for (let i = 0; i < posts.length; i++) {
   post.append(testoPost);
 
   
-
+  const testo = postAttuale.content;
+  console.log('testo', testo);
+  testoPost.innerHTML = testo;
   
   
   //Creo il div dell'immagine del post
@@ -136,7 +143,13 @@ for (let i = 0; i < posts.length; i++) {
   post.append(immaginePost);
   
   
-  
+  const immagine = postAttuale.author.image;
+  console.log(immagine);
+  immaginePost.innerHTML =
+  `
+  <img src="${immagine}" alt="">
+  `;
+
 
   
   ////////////////////////////////
@@ -150,17 +163,29 @@ for (let i = 0; i < posts.length; i++) {
   barraLike.classList.add('likes');
   postFooter.append(barraLike);
 
-  //Creo il div del bottone dei like
+  //Creo il bottone dei like
   const like = document.createElement('div');
   like.classList.add('likes__cta');
   barraLike.append(like);
-  
-  //Creo il btn
-  const bottoneLike = document.createElement('a');
-  bottoneLike.classList.add('like-button');
-  like.append(bottoneLike)
 
+  like.innerHTML =
+  `
+  <a class="like-button  js-like-button" href="#" data-postid="1">
+    <i class="like-button__icon fas fa-thumbs-up" aria-hidden="true"></i>
+    <span class="like-button__label">Mi Piace</span>
+  </a>
+  `
+   
   
+  //Creo il counter dei mi piace
+  const counterLike = document.createElement('div');
+  counterLike.classList.add('likes__counter');
+  barraLike.append(counterLike);
+  counterLike.innerHTML = 
+  `
+  Piace a <b id="like-counter-1" class="js-likes-counter">80</b> persone
+  `;
+
 }
 
 
