@@ -174,16 +174,19 @@ for (let i = 0; i < posts.length; i++) {
     <i class="like-button__icon fas fa-thumbs-up" aria-hidden="true"></i>
     <span class="like-button__label">Mi Piace</span>
   </a>
-  `
-   
-  
+  `;
+
   //Creo il counter dei mi piace
   const counterLike = document.createElement('div');
   counterLike.classList.add('likes__counter');
   barraLike.append(counterLike);
+
+  const likeNum = postAttuale.likes;
+  console.log(likeNum);
+
   counterLike.innerHTML = 
   `
-  Piace a <b id="like-counter-1" class="js-likes-counter">80</b> persone
+  Piace a <b id="like-counter-1" class="js-likes-counter">${likeNum}</b> persone
   `;
 
 }
